@@ -14,12 +14,12 @@ from tqdm import tqdm
 
 
 def surya_detect(
-        input_path: str,
-        results_dir: str = None,
-        max_pages: int = None,
-        images: bool = False,
-        debug: bool = False
-    ):
+    input_path: str,
+    results_dir: str = None,
+    max_pages: int = None,
+    images: bool = False,
+    debug: bool = False
+):
     # parser = argparse.ArgumentParser(description="Detect bboxes in an input file or folder (PDFs or image).")
     # parser.add_argument("input_path", type=str, help="Path to pdf or image file or folder to detect bboxes in.")
     # parser.add_argument("--results_dir", type=str, help="Path to JSON file with OCR results.", default=os.path.join(settings.RESULT_DIR, "surya"))
@@ -67,7 +67,12 @@ def surya_detect(
     return predictions_by_page
 
 
-
-
-
-
+def main(
+    input_path: str,
+    results_dir: str = None,
+    max_pages: int = None,
+    images: bool = False,
+    debug: bool = False
+):
+    results = surya_detect(input_path, results_dir, max_pages, images, debug)
+    return results
