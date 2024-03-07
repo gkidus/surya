@@ -61,6 +61,10 @@ def surya_detect(
         out_pred["page"] = len(predictions_by_page[name]) + 1
         predictions_by_page[name].append(out_pred)
 
+    with open(os.path.join(result_path, "results.json"), "w+") as f:
+        json.dump(predictions_by_page, f, ensure_ascii=False)
+
+    print(f"Wrote results to {result_path}")
     return predictions_by_page
 
 
